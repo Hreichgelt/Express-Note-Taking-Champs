@@ -22,7 +22,14 @@ When you open the note taker, you are presented with a landing page with a link 
 
 ## VISUALS
 
-![Express.js Note Taking Champs](.)
+
+https://drive.google.com/file/d/1uPjE3yaGpsLaPOvyi4Fk3wTiVVyEhfMW/view?usp=sharing - Demo 
+ https://drive.google.com/file/d/1r0cMYkvABRlDII9rEq9ZN3EfaxhkNQvM/view?usp=sharing - Heroku Deployment Demo
+
+
+![Express.js Note Taking Champs Landing Page](./assets/imgs/Note-Taker1.png)
+
+![Express.js Note Taking Champs Notes Page](./assets/imgs/Note-Taker2.png)
 
 ## AUTHORS AND ACKNOWLEDGMENTS
 
