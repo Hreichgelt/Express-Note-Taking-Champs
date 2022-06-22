@@ -2,7 +2,7 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 const database = require("./db/db.json");
 const uuid = require('./helpers/uuid.js');
 const { text } = require('express');
@@ -24,6 +24,12 @@ app.get("/", (req, res) =>
 app.get("/notes", (req, res) =>
     res.sendFile(path.join(__dirname, "/public/notes.html"))
 );
+
+// GET Route for retrieving all the tips - might need something like this for |||||| also could use readandappend
+// app.get('/api/tips', (req, res) => {
+//     console.info(`${req.method} request received for tips`);
+//     readFromFile('./db/tips.json').then((data) => res.json(JSON.parse(data)));
+//   });
 
 
 // need to writefile? writefilesync?
