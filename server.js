@@ -3,9 +3,12 @@ const express = require('express');
 const path = require('path');
 const fs = require('fs');
 const PORT = 3001;
-// const notes = require('./db/notes'); this doesnt exist?
 const database = require("./db/db.json");
-const uuid = require('/helpers/uuid.js');
+const uuid = require('./helpers/uuid.js');
+const { text } = require('express');
+
+const notes = require('/db/db.json')
+
 const app = express();
 
 // Middleware for parsing application/json and urlencoded data
@@ -14,13 +17,13 @@ app.use(express.json());
 app.use(express.static('public'));
 
 // need app.get for both html files? adding just in case
-app.get("/", function (req, res) {
-    res.sendFile(path.join(__dirname, "/public/index.html"));
-});
+app.get("/", (req, res) =>
+    res.sendFile(path.join(__dirname, "/public/index.html"))
+);
 
-app.get("/notes", function (req, res) {
-    res.sendFile(path.join(__dirname, "/public/notes.html"));
-});
+app.get("/notes", (req, res) =>
+    res.sendFile(path.join(__dirname, "/public/notes.html"))
+);
 
 
 // need to writefile? writefilesync?
@@ -34,14 +37,15 @@ app.get("/api/notes", (req, res) => {
 app.post(database, (req, res) => {
     console.info(`${req.method} request received to add note`)
 
-    const {title, note, due} = req.body; 
+// look at activity 21 read and append!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-    if (title && note && duedate) {
+    const {title, text} = req.body; 
+
+    if (title && text) {
        const newNote = {
           title,
-          note, 
-          duedate,
-          note_id: uuid(),
+          text, 
+          id: uuid(),
         };
 
 const noteString = JSON.stringify(newNote, null, 2);
@@ -50,7 +54,7 @@ const noteString = JSON.stringify(newNote, null, 2);
     err
         ? console.error(err)
         : console.log(
-            `Note for ${newNote.response} has been written to JSON file`
+            `Note for ${newNote.title} has been written to JSON file`
         )
 );
     const response = {
