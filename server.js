@@ -22,7 +22,7 @@ app.get("/notes", function (req, res) {
     res.sendFile(path.join(__dirname, "/public/notes.html"));
 });
 
-// db.json needs to store the notes? - if yes - how? app.what?
+
 // where do routes come in?
 // need to writefile? writefilesync?
 
@@ -31,25 +31,36 @@ app.get("/api/notes", (req, res) => {
     return res.json(database);
 });
 
+// posting notes to database
 app.post('/db/db.json', (req, res) => {
     console.info(`${req.method} request received to add note`)
     let newNote = req.body; 
 
     if (req.body && req.body.product) {
-        response = {
+       const response = {
             status: 'success', 
             data: req.body,
-        };
-        notes.push({
-            ...req.body,
             note_id: uuid(),
-        });
-        res.json(`Note for ${response.data.product} has been added!`);
-    } else {
-        res.json('Request body must at leaset contain a review')
+        };
+        // notes.push({
+        //     ...req.body,
+        //     note_id: uuid(),
+        // });
+    //     res.json(`Note for ${response.data.product} has been added!`);
+    // } else {
+    //     res.json('Request body must at leaset contain a review')
     }
 
-    console.log(req.body);
+    // console.log(req.body);
+const noteString = JSON.stringify(newNote, null, 2);
+    // follow lesson 19
+    fs.writeFile(`./db/${newNote.response}.json`, noteString, (err) => 
+    err
+        ? console.error(err)
+        : console.log(
+            `Note for ${newNote.response} has been written to JSON file`
+        ))
+
 });
 
 // event listener always at the bottom!~ Might as well create now
