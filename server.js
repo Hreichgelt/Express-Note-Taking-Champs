@@ -4,7 +4,7 @@ const path = require('path');
 const fs = require('fs');
 const PORT = 3001;
 // const notes = require('./db/notes'); this doesnt exist?
-const database = require("./db/db");
+const database = require("./db/db.json");
 const uuid = require('/helpers/uuid.js');
 const app = express();
 
@@ -23,7 +23,6 @@ app.get("/notes", function (req, res) {
 });
 
 
-// where do routes come in?
 // need to writefile? writefilesync?
 
 app.get("/api/notes", (req, res) => {
@@ -32,26 +31,19 @@ app.get("/api/notes", (req, res) => {
 });
 
 // posting notes to database
-app.post('/db/db.json', (req, res) => {
+app.post(database, (req, res) => {
     console.info(`${req.method} request received to add note`)
-    let newNote = req.body; 
 
-    if (req.body && req.body.product) {
-       const response = {
-            status: 'success', 
-            data: req.body,
-            note_id: uuid(),
+    const {title, note, due} = req.body; 
+
+    if (title && note && duedate) {
+       const newNote = {
+          title,
+          note, 
+          duedate,
+          note_id: uuid(),
         };
-        // notes.push({
-        //     ...req.body,
-        //     note_id: uuid(),
-        // });
-    //     res.json(`Note for ${response.data.product} has been added!`);
-    // } else {
-    //     res.json('Request body must at leaset contain a review')
-    }
 
-    // console.log(req.body);
 const noteString = JSON.stringify(newNote, null, 2);
     // follow lesson 19
     fs.writeFile(`./db/${newNote.response}.json`, noteString, (err) => 
@@ -59,8 +51,18 @@ const noteString = JSON.stringify(newNote, null, 2);
         ? console.error(err)
         : console.log(
             `Note for ${newNote.response} has been written to JSON file`
-        ))
+        )
+);
+    const response = {
+        status: 'success',
+        body: newNote,
+    };
 
+    console.log(response);
+    res.status(201).json(response);
+} else {
+    res.status(500).json('Error in posting note');
+}
 });
 
 // event listener always at the bottom!~ Might as well create now
