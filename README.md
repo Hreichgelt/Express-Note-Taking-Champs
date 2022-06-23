@@ -6,6 +6,10 @@ A Node command-line application that takes in information about employees on a s
 
 [LIVE SITE](https://hreichgelt.github.io/Express-Note-Taking-Champs/)
 
+[Heroku Starting Page](https://serene-mesa-59886.herokuapp.com/)
+
+[Heroku Notes Page](https://serene-mesa-59886.herokuapp.com/notes)
+
 ## TABLE OF CONTENTS
 
 1. [Description](#description)
