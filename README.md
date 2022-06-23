@@ -4,11 +4,11 @@
 
 A Node command-line application that takes in information about employees on a software engineering team and generates an HTML webpage that displays summaries for each person.
 
-[LIVE SITE](https://hreichgelt.github.io/Express-Note-Taking-Champs/)
+[LIVE SITE README](https://hreichgelt.github.io/Express-Note-Taking-Champs/)
 
-[Heroku Starting Page](https://serene-mesa-59886.herokuapp.com/)
+[HEROKU STARTING PAGE](https://serene-mesa-59886.herokuapp.com/)
 
-[Heroku Notes Page](https://serene-mesa-59886.herokuapp.com/notes)
+[HEROKU NOTES PAGE](https://serene-mesa-59886.herokuapp.com/notes)
 
 ## TABLE OF CONTENTS
 
@@ -43,3 +43,7 @@ When you open the note taker, you are presented with a landing page with a link 
 1. [LIVE SITE](https://hreichgelt.github.io/Express-Note-Taking-Champs/)
 
 2. [REPOSITORY](https://github.com/Hreichgelt/Express-Note-Taking-Champs)
+
+3. [HEROKU STARTING PAGE](https://serene-mesa-59886.herokuapp.com/)
+
+4. [HEROKU NOTES PAGE](https://serene-mesa-59886.herokuapp.com/notes)
